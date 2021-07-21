@@ -8,6 +8,7 @@ Be as specific as possible; how does your app solve the problem?
 	-To give economic opportunities to women in sauti africa who are in poverty  
 What is the mission statement?
 	-We are here for sauti african women 
+
 💡 Features
 
 What features are required for your minimum viable product?
@@ -16,6 +17,7 @@ What features may you wish to put in a future release?
 	-Being able to allow users to upload profile pictures. 
 What do the top 3 similar apps do for their users?
 	-They all do almost the same as what we intend to do
+
 🛠 Frameworks - Libraries
 
 What 3rd party frameworks/libraries are you considering using?
@@ -24,6 +26,7 @@ Do the APIs you need require you to contact them to gain access?
 	-no
 Are you required to pay to use said API(s)?
 	-no
+
 🧮 For Data Scientists
 
 Describe the established data source with at least rough data able to be provided on day one.
@@ -31,6 +34,7 @@ Describe the established data source with at least rough data able to be provide
 
 Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
 	-n/a
+
 🎯 Target Audience
 
 Who is your target audience? Be specific.
