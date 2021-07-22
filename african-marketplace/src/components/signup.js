@@ -3,7 +3,7 @@ import "./signupForm.css"
 
 
 
-class Form extends Component {
+class SignUpForm extends Component {
     constructor(props) {
         super(props)
 
@@ -114,4 +114,4 @@ class Form extends Component {
     }
 }
 
-export default Form
+export default SignUpForm
