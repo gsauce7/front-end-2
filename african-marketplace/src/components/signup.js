@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./signupForm.css"
-
+import axios from 'axios'
 
 
 class SignUpForm extends Component {
@@ -18,27 +18,9 @@ class SignUpForm extends Component {
         this.handleSubmit=this.handleSubmit.bind(this)
     }
 
-    firsthandler = (event) => {
-        this.setState({
-            firstName: event.target.value
-        })
+    changeHandler = (event) => {
+        this.setState({[event.target.name]: event.target.value})
     }
-    lasthandler = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
-    }
-    passwordhandler = (event) => {
-        this.setState({
-            password: event.target.value
-        })
-    }
-
-    emailhandler = (event) => {
-        this.setState({
-            email: event.target.value
-    })
-} 
 
     sellerhandler = (event) => {
         this.setState({
@@ -47,67 +29,73 @@ class SignUpForm extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state);
-        this.setState({
-            firstName: "",
-            lastName: "",
-            password: '',
-            email: '',
-            seller: false,
-        })
+        // console.log(this.state);
         event.preventDefault()
         
+        axios.post(null)
+        .then(res => {
+            console.log("response:", res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
 
     render() {
+        const { firstName, lastName, password, email, seller } = this.state
         return (
             <div>
-
                 <form onSubmit={this.handleSubmit} className="container">
                     <h1>Sign Up</h1>
+
                     <label>FirstName :</label> 
                     <input 
                         type="text" 
-                        value={this.state.firstName} 
-                        onChange={this.firsthandler} 
+                        name='firstName'
+                        value={firstName} 
+                        onChange={this.changeHandler} 
                         placeholder="FirstName..." />
                     <br />
 
                     <label>LastName :</label> 
                     <input 
                         type="text" 
-                        value={this.state.lastName} 
-                        onChange={this.lasthandler} 
+                        name='lastName'
+                        value={lastName} 
+                        onChange={this.changeHandler}  
                         placeholder="LastName..." />
                     <br />
 
                     <label>Password :</label> 
                     <input 
                         type="password" 
-                        value={this.state.password} 
-                        onChange={this.passwordhandler} 
+                        name='password'
+                        value={password} 
+                        onChange={this.changeHandler}  
                         placeholder="Password..." />
                     <br />
 
                     <label>Email :</label> 
                     <input 
                         type="text" 
-                        value={this.state.email} 
-                        onChange={this.emailhandler} 
+                        name='email'
+                        value={email} 
+                        onChange={this.changeHandler}  
                         placeholder="Email..." />
                     <br />
-
+                    
                     <label>Are you a seller?</label> 
                     <input 
                         type="checkbox" 
-                        value={this.state.seller} 
+                        name='seller'
+                        value={seller} 
                         onChange={this.sellerhandler} 
                         placeholder="Are you a seller?" />
                     <br />
+
                     <input type="submit" value="Submit" />
                 </form>
-
             </div>
             
         )

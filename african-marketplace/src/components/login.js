@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios"
 
 class Login extends Component {
     constructor(props) {
@@ -30,6 +31,14 @@ class Login extends Component {
             email: '',
         })
         event.preventDefault()
+
+        axios.post(null)
+        .then(res => {
+            console.log("response:", res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
         
     }
 
