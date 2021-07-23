@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./signupForm.css"
+import "../styles/signupForm.css"
 import axios from 'axios'
 
 
