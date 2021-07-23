@@ -6,6 +6,7 @@ import ProtectedRoute from './helpers/ProtectedRoute';
 import SignUpForm from './components/signup';
 import Login from './components/login'
 import ItemForm from './components/items';
+import HomePage from './components/Homepage';
 
 
 
@@ -43,6 +44,7 @@ function App() {
             <ProtectedRoute exact path="/listings" component={ItemForm} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUpForm} />
+            <Route path="/" component={HomePage} />
           </Switch>
       </div>
     </Router>   
