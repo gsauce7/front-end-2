@@ -2,29 +2,29 @@ import React, {useState} from 'react'
 
 
 const ItemForm = () => {
-  const [itemFormValues, setItemFormValues] = useState({
+const [itemFormValues, setItemFormValues] = useState({
     productName: "", 
     description: "", 
     seller_price: 0, 
     qty: 0
-  });
+});
 
-  const inputChange = (e) => {
+const inputChange = (e) => {
     
     const { name, value } = e.target;
-      console.log(`name: ${name}, value: ${value}`);
+    console.log(`name: ${name}, value: ${value}`);
     const inputValue = value;
-      console.log("inputValue: ", inputValue)
-      setItemFormValues({ ...itemFormValues, [name]: inputValue });
+    console.log("inputValue: ", inputValue)
+    setItemFormValues({ ...itemFormValues, [name]: inputValue });
     } 
 
-  const onFormSubmit = (e) => {
-      console.log('Item Submitted and Displayed on Next Line');
-      e.preventDefault();
+const onFormSubmit = (e) => {
+    console.log('Item Submitted and Displayed on Next Line');
+    e.preventDefault();
 
-      
-  
-      }
+    
+
+    }
     
     return (
         <>
@@ -33,9 +33,8 @@ const ItemForm = () => {
             <div className='itemForm-container'>
             <form className='itemForm' onSubmit={onFormSubmit}>
                 <div className='itemForm-title'>
-                    <h1 >Inventory</h1>
-                    <h2>Welcome Merchant!</h2>
-                    <p>Fill in form and click submit to add new products to sell on Sauti Market.</p>
+                    <h1 >Items</h1>
+                    <p>Fill out form to put items up for sale</p>
                 </div>
 
 
