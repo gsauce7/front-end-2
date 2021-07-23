@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-// import TextInput from './TextInput.js'
-
 
 
 const ItemForm = () => {
@@ -10,8 +8,6 @@ const ItemForm = () => {
     seller_price: 0, 
     qty: 0
   });
-
-    //const {itemFormValues, setItemFormValues, loginDisabled} = props
 
   const inputChange = (e) => {
     
@@ -29,8 +25,6 @@ const ItemForm = () => {
       
   
       }
-        // console.log(item);
-        
     
     return (
         <>
