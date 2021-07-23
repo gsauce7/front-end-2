@@ -64,7 +64,7 @@ select {
     border-radius: 15px;
     padding:18px;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     box-shadow: 0 8px 6px -6px black;
 }
 

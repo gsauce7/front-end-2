@@ -8,9 +8,10 @@ class SignUpForm extends Component {
         super(props)
 
         this.state = {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             password: "",
+            password_confirmation: "",
             email: "",
             seller: false,
 
@@ -29,7 +30,7 @@ class SignUpForm extends Component {
     }
 
     handleSubmit = (event) => {
-        // console.log(this.state);
+        console.log(this.state);
         event.preventDefault()
         
         axios.post(null)
@@ -43,28 +44,28 @@ class SignUpForm extends Component {
 
 
     render() {
-        const { firstName, lastName, password, email, seller } = this.state
+        const { first_name, last_name, password, password_confirmation, email, seller } = this.state
         return (
             <div>
                 <form onSubmit={this.handleSubmit} className="container">
                     <h1>Sign Up</h1>
 
-                    <label>FirstName :</label> 
+                    <label>First Name :</label> 
                     <input 
                         type="text" 
-                        name='firstName'
-                        value={firstName} 
+                        name='first_name'
+                        value={first_name} 
                         onChange={this.changeHandler} 
-                        placeholder="FirstName..." />
+                        placeholder="First Name..." />
                     <br />
 
-                    <label>LastName :</label> 
+                    <label>Last Name :</label> 
                     <input 
                         type="text" 
-                        name='lastName'
-                        value={lastName} 
+                        name='last_name'
+                        value={last_name} 
                         onChange={this.changeHandler}  
-                        placeholder="LastName..." />
+                        placeholder="Last Name..." />
                     <br />
 
                     <label>Password :</label> 
@@ -74,6 +75,15 @@ class SignUpForm extends Component {
                         value={password} 
                         onChange={this.changeHandler}  
                         placeholder="Password..." />
+                    <br />
+
+                    <label>Password Confirmation:</label> 
+                    <input 
+                        type="password" 
+                        name='password_confirmation'
+                        value={password_confirmation} 
+                        onChange={this.changeHandler}  
+                        placeholder="Confirm Password..." />
                     <br />
 
                     <label>Email :</label> 

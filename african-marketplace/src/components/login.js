@@ -7,7 +7,7 @@ class Login extends Component {
 
         this.state = {
             password: "",
-            email: "",
+            username: "",
         }
         this.handleSubmit=this.handleSubmit.bind(this)
     }
@@ -18,9 +18,9 @@ class Login extends Component {
         })
     }
 
-    emailhandler = (event) => {
+    usernamehandler = (event) => {
         this.setState({
-            email: event.target.value
+            username: event.target.value
     })
     }
 
@@ -28,7 +28,7 @@ class Login extends Component {
         console.log(this.state);
         this.setState({
             password: '',
-            email: '',
+            username: '',
         })
         event.preventDefault()
 
@@ -47,12 +47,12 @@ class Login extends Component {
             <div>
                 <form onSubmit={this.handleSubmit} className="container">
                 <h1>Login</h1>
-                    <label>Email :</label> 
+                    <label>Username :</label> 
                     <input 
                         type="text" 
-                        value={this.state.email} 
-                        onChange={this.emailhandler} 
-                        placeholder="Email..." />
+                        value={this.state.username} 
+                        onChange={this.usernamehandler} 
+                        placeholder="Username..." />
                     <br />
                     <label>Password :</label> 
                     <input 
