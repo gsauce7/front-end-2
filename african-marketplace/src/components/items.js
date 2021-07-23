@@ -46,7 +46,7 @@ const ItemForm = () => {
 
 
             <label htmlFor="name">
-            Product name: &nbsp;
+            Product name: 
                 <input
                     type="text"
                     name="productName"
@@ -58,9 +58,9 @@ const ItemForm = () => {
                 />
             </label>
 
-            &nbsp; &nbsp;
+            
             <label htmlFor="name">
-            Product: &nbsp;
+            Product: 
                     <input
                     type="text"
                     name="description"
@@ -71,9 +71,9 @@ const ItemForm = () => {
                 />
                 </label>
 
-            &nbsp; &nbsp;
+            
             <label htmlFor="name">
-            Price: &nbsp;  
+            Price:  
                     <input
                     type="text"
                     name="seller_price"
@@ -83,9 +83,9 @@ const ItemForm = () => {
                 />
             </label>
 
-            &nbsp; &nbsp;
+            
             <label htmlFor="name">
-            Qty: &nbsp;
+            Qty: 
                 <input
                 type="text"
                 name="qty"
@@ -96,22 +96,8 @@ const ItemForm = () => {
             </label>
 
 
-                  {/* <div>{itemFormErrors.itemName}</div> */}
-
-                {/* <div className='itemForm-radio'>
-                <input type="radio" name="isOverEighteen" onChange={inputChange} value={true}/>Are you over 18 years of age?
-                  </div> */}
-                  {/* <div>{itemFormErrors.isOverEighteen}</div> */}
-
-
                 <div className='itemForm-slider'>
                     <div className="slider-container">
-                    {/* <label className="switch">
-                        <input id="isMerchant" type="checkbox" name="merchant"
-                        checked={itemFormValues.isMerchant} onChange={inputChange}/> 
-                        <span className="slider"></span><br/>
-                    </label>
-                      <p className="slider-text">Are you an instructor?</p> */}
 
                     </div>
                 </div>
