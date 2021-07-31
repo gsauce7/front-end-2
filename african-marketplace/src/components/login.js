@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios"
 
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -25,19 +26,20 @@ class Login extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state);
         this.setState({
             password: '',
             username: '',
         })
         event.preventDefault()
 
-        axios.post(null)
+        axios.post('https://ptct-african-marketplace-5.herokuapp.com/api/auth/login', this.state)
         .then(res => {
-            console.log("response:", res)
+            console.log("happy path!", res.data);
+            localStorage.setItem('token', res.data.token);
+            //window.location.href = "/listings";
         })
         .catch(err => {
-            console.log(err)
+            console.log("sad path:(", err)
         })
         
     }
