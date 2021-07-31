@@ -36,7 +36,7 @@ class Login extends Component {
         .then(res => {
             console.log("happy path!", res.data);
             localStorage.setItem('token', res.data.token);
-            //window.location.href = "/listings";
+            window.location.href = "/listings";
         })
         .catch(err => {
             console.log("sad path:(", err)
