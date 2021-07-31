@@ -3,17 +3,23 @@ import "../styles/signupForm.css"
 import axios from 'axios'
 
 
+
 class SignUpForm extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            first_name: "",
-            last_name: "",
-            password: "",
-            password_confirmation: "",
-            email: "",
-            seller: false,
+            // first_name: "",
+            // last_name: "",
+            // password: "",
+            // password_confirmation: "",
+            // email: "",
+            //seller: false,
+            username:"" , 
+            password:"", 
+            first_name:"", 
+            last_name:"", 
+            email:""
 
         }
         this.handleSubmit=this.handleSubmit.bind(this)
@@ -30,21 +36,23 @@ class SignUpForm extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state);
         event.preventDefault()
         
-        axios.post(null)
+        axios.post('https://ptct-african-marketplace-5.herokuapp.com/api/auth/register', this.state)
         .then(res => {
             console.log("response:", res)
+            window.location.href = "/login";
         })
         .catch(err => {
-            console.log(err)
+            console.log("sad path:(", err.response.data)
         })
+
+        
     }
 
 
     render() {
-        const { first_name, last_name, password, password_confirmation, email, seller } = this.state
+        const { first_name, last_name, password, email, username } = this.state
         return (
             <div>
                 <form onSubmit={this.handleSubmit} className="container">
@@ -68,6 +76,15 @@ class SignUpForm extends Component {
                         placeholder="Last Name..." />
                     <br />
 
+                    <label>Username:</label> 
+                    <input 
+                        type="text" 
+                        name='username'
+                        value={username} 
+                        onChange={this.changeHandler}  
+                        placeholder="Username..." />
+                    <br />
+
                     <label>Password :</label> 
                     <input 
                         type="password" 
@@ -75,15 +92,6 @@ class SignUpForm extends Component {
                         value={password} 
                         onChange={this.changeHandler}  
                         placeholder="Password..." />
-                    <br />
-
-                    <label>Password Confirmation:</label> 
-                    <input 
-                        type="password" 
-                        name='password_confirmation'
-                        value={password_confirmation} 
-                        onChange={this.changeHandler}  
-                        placeholder="Confirm Password..." />
                     <br />
 
                     <label>Email :</label> 
@@ -95,13 +103,13 @@ class SignUpForm extends Component {
                         placeholder="Email..." />
                     <br />
                     
-                    <label>Are you a seller?</label> 
+                    {/* <label>Are you a seller?</label> 
                     <input 
                         type="checkbox" 
                         name='seller'
                         value={seller} 
                         onChange={this.sellerhandler} 
-                        placeholder="Are you a seller?" />
+                        placeholder="Are you a seller?" /> */}
                     <br />
 
                     <input type="submit" value="Submit" />

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = ""
+const baseURL = "https://ptct-african-marketplace-5.herokuapp.com/api"
 
 export const axiosWithAuth = () => {
     return axios.create({
