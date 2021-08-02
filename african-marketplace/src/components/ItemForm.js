@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useForm } from "../hooks/useForm"
 import ItemContext from '../context/ItemContext';
@@ -8,10 +8,10 @@ import { axiosWithAuth } from '../helpers/axiosWithAuth';
 
 
 const ItemForm = () => {
-    const { items, setItems } = useContext(ItemContext);
+    const { items, setItems, tempItem, setTempItem } = useContext(ItemContext);
 
     const initialValues = {
-        item_id: "", 
+        name: "", 
         item_listing_description: "", 
         locations_where_sold: "",
         price: 0, 
@@ -19,30 +19,66 @@ const ItemForm = () => {
         qty: 0
     } 
 
+    console.log(tempItem.slice(-1)[0].id)
+
     const [value, handleChanges] = useForm(initialValues)
+
+   
+    const sale = () => {
+
+        const newItemForSale ={
+            item_id: tempItem.slice(-1)[0].id,
+            item_listing_description: value.description.trim(),
+            locations_where_sold: value.location.trim(),
+            price: Number(value.price),
+            user_id: tempItem[tempItem.length - 1].user_id,
+        }
+
+        axiosWithAuth().post("/items-for-sale", newItemForSale)
+            .then(res=>{
+                console.log('Happy path!: Item Submitted:', res.data);
+                setItems([...items, newItemForSale])
+            })
+            .catch(err =>{
+                console.log(err);
+            });
+    }
+
+    const confirm=()=> {
+        if (window.confirm("Are all details for your item correct?")) {
+            sale();
+            window.alert("Listing has been put up");
+            window.location.href('/listings')
+          }
+      }
 
     const onFormSubmit = (e) => {
         e.preventDefault();
 
         const newItem ={
-            item_id:value.name.trim(),
-            item_listing_description:value.description.trim(),
-            category:value.category,
-            locations_where_sold: value.location,
-            price:Number(value.price),
-            qty: value.qty
+            item_name: value.name,
+            description: value.description.trim(), 
+            category_id: 11,
+            user_id: 5,
+            location_id: 1,
         }
 
-        axiosWithAuth().post("/items-for-sale", newItem)
+
+        axiosWithAuth().post("/items", newItem)
             .then(res=>{
                 console.log('Item Submitted:', res.data);
-                setItems([...items, newItem])    
+                setTempItem([...tempItem, newItem])
+                confirm();   
             })
             .catch(err =>{
                 console.log(err);
             });
-            window.location.href = "/listings"
+        
         }
+
+        useEffect(()=>{
+         
+        })
     
     return (
         <>
@@ -63,7 +99,7 @@ const ItemForm = () => {
                     name="name"
                     placeholder="Product's Name"
                     onChange={handleChanges} 
-                    value={value.item_id}
+                    value={value.name}
                     label="Product name"
                 />
             </label>
@@ -119,7 +155,7 @@ const ItemForm = () => {
                     placeholder="Location"
                     onChange={handleChanges} 
                     value={value.locations_where_sold}
-                />
+                /> 
             </label>
 
             
@@ -144,7 +180,7 @@ const ItemForm = () => {
                 <br/>
                 <br/>
                 <button type="submit" id="submitBtn" >Submit</button> 
-                <Link to='/listings'>Cancel</Link>
+                <Link to='/listings'>Go Back</Link>
 
             </form>
             </div>

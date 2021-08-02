@@ -6,11 +6,15 @@ import Item from './Item';
 
 const ItemList = () =>{
 
-    const { items, getData } = useContext(ItemContext)
+    const { items, getData, getSaleData, getLocationData, locations, tempItem } = useContext(ItemContext)
 
     useEffect(()=> {
         getData();
-    },[])
+        getSaleData();
+    }, [])
+
+    console.log(items)
+    console.log(tempItem)
 
 
     return(

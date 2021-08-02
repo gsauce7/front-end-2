@@ -12,19 +12,42 @@ import Item from './components/Item';
 import ItemContext from './context/ItemContext';
 import { axiosWithAuth } from './helpers/axiosWithAuth';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { useEffect, useState } from 'react';
 
 
 function App() {
   const [items, setItems] = useLocalStorage("items", [])
-  
+  const [locations, setLocation] = useLocalStorage("locations", [])
+
+  const [tempItem, setTempItem] = useLocalStorage("itemsTemp", [])
+
+  const getLocationData = () => {
+    axiosWithAuth().get('/locations')
+      .then(res => {setLocation(res.data)
+          //console.log(res.data)
+      })
+      .catch(err => console.log(err));
+  }
 
   const getData = ()=>{
+    axiosWithAuth().get('/items')
+        .then(res => {setTempItem(res.data)
+        //console.log(res.data)
+      })
+        .catch(err => console.log(err));
+  }
+
+  const getSaleData = ()=>{
     axiosWithAuth().get('/items-for-sale')
         .then(res => {setItems(res.data)
         //console.log(res.data)
       })
         .catch(err => console.log(err));
   }
+
+  useEffect(()=>{
+    getLocationData()
+  },[])
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -58,7 +81,7 @@ function App() {
             <TokenRoute path="/login" component={Login} />
             <Route path="/signup" component={SignUpForm} />
 
-            <ItemContext.Provider value={{items, getData, setItems}}>
+            <ItemContext.Provider value={{items, getData, setItems, tempItem, setTempItem, locations, getLocationData, getSaleData}}>
               <ProtectedRoute exact path="/listings" component={ItemList} />
               <ProtectedRoute path="/addItem" component={ItemForm} />
               <ProtectedRoute path="/details" component={Item} />
